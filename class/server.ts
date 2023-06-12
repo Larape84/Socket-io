@@ -19,9 +19,10 @@ export default class Server {
         this.httpServer = new http.Server(this.app);
         this.io = new socketIO.Server(this.httpServer, {
             cors: {
-                origin: 'http://localhost:4200',
-                methods: ['GET', 'POST'],
-                allowedHeaders: ['Content-Type', 'Authorization']
+                origin: true,
+                // methods: ['GET', 'POST'],
+                // allowedHeaders: ['Content-Type', 'Authorization'],
+                credentials:true
               }
         });
         this.escucharSocket();
@@ -41,11 +42,13 @@ export default class Server {
         
         this.io.on('connection', cliente=>{
 
-            console.log('cliente conectado')
+             console.log('cliente conectado', cliente.id)
+            socketfunction.configurarUsuario(cliente, this.io);
 
             socketfunction.mensaje(cliente, this.io);
 
             socketfunction.desconectar(cliente);
+
         })
     }
 

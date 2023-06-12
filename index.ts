@@ -6,9 +6,9 @@ import cors from 'cors'
 const server = Server.instance;
 
 server.app.use(cors({
-    origin: 'http://localhost:4200',  // Especifica el origen permitido
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',  // Especifica los métodos HTTP permitidos
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Custom-Header'],
+    origin: true,  // Especifica el origen permitido
+    // methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',  // Especifica los métodos HTTP permitidos
+    // allowedHeaders: ['Content-Type', 'Authorization', 'X-Custom-Header'],
     credentials: true 
   }));
 
